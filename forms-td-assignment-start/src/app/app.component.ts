@@ -7,25 +7,25 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  subscriptions = ['Basic','Advanced','Pro'];
+  subscriptions = ['Basic', 'Advanced', 'Pro'];
   defaultSub = 'Advanced';
-  @ViewChild('form') practiceForm:NgForm;
+  @ViewChild('form') practiceForm: NgForm;
   submitted = false;
 
   data = {
-    email:'',
-    subscription:'',
-    password:''
-  }
+    email: '',
+    subscription: '',
+    password: ''
+  };
 
-  onSubmit(){
+  onSubmit() {
     console.log(this.practiceForm);
 
     this.submitted = true;
     this.data.email = this.practiceForm.value.email;
-    this.data.subscription = this.practiceForm.value.Subscriptions
+    this.data.subscription = this.practiceForm.value.Subscriptions;
     this.data.password = this.practiceForm.value.password;
-    
+
     this.practiceForm.reset();
   }
 
