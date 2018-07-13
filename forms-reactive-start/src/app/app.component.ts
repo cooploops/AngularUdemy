@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
       },
       'gender': 'male',
       'hobbies': []
-    });    this.signupForm.patchValue({
+    }); this.signupForm.patchValue({
       'userData': {
         'username': 'anna'
       }
@@ -51,18 +51,21 @@ export class AppComponent implements OnInit {
     (<FormArray>this.signupForm.get('hobbies')).push(control);
   }
 
-  forbiddenNames(control: FormControl): {[s: string]: boolean} {
+  // Validators
+
+  forbiddenNames(control: FormControl): { [s: string]: boolean } {
     if (this.forbiddenUsernames.indexOf(control.value) !== -1) {
-      return {'nameIsForbidden': true};
+      return { 'nameIsForbidden': true };
     }
     return null;
   }
 
+  // ASYNC Validator
   forbiddenEmails(control: FormControl): Promise<any> | Observable<any> {
     const promise = new Promise<any>((resolve, reject) => {
       setTimeout(() => {
         if (control.value === 'test@test.com') {
-          resolve({'emailIsForbidden': true});
+          resolve({ 'emailIsForbidden': true });
         } else {
           resolve(null);
         }
